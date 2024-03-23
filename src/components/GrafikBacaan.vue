@@ -92,7 +92,7 @@ import { getStorage } from '@/helpers/getStorage';
     <div class="card-body">
       <div class="mb-3">
         <div class="fs-5 fw-bold">Grafik Isi Koreksi DSML</div>
-        <div class="fw-lighter text-body-tertiary">Periode Maret 2024</div>
+        <div class="fw-lighter text-body-tertiary">Data jumlah pengisian stand meter bulan berjalan</div>
       </div>
       <div>
         <apexchart type="area" height="350" :options="options" :series="series"></apexchart>

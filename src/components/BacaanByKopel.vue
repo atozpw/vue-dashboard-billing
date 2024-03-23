@@ -133,8 +133,8 @@
   <div class="card border-0">
     <div class="card-body">
       <div class="mb-3">
-        <div class="fs-5 fw-bold">Proyeksi Pendapatan Kota Pelayanan</div>
-        <div class="fw-lighter text-body-tertiary">Data diurut berdasarkan proyeksi pendapatan terbesar</div>
+        <div class="fs-5 fw-bold">Proyeksi Pendapatan</div>
+        <div class="fw-lighter text-body-tertiary">Data diurutkan berdasarkan proyeksi pendapatan tertinggi</div>
       </div>
       <div class="table-responsive">
         <table class="table">

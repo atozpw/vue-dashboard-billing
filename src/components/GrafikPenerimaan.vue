@@ -91,7 +91,7 @@
     <div class="card-body">
       <div class="mb-3">
         <div class="fs-5 fw-bold">Grafik Penerimaan</div>
-        <div class="fw-lighter text-body-tertiary">Periode Maret 2024</div>
+        <div class="fw-lighter text-body-tertiary">Data total penerimaan harian bulan berjalan</div>
       </div>
       <div>
         <apexchart type="area" height="350" :options="options" :series="series"></apexchart>

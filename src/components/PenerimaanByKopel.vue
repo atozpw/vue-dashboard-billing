@@ -121,8 +121,8 @@
   <div class="card border-0">
     <div class="card-body">
       <div class="mb-3">
-        <div class="fs-5 fw-bold">DRD & Penerimaan Kota Pelayanan</div>
-        <div class="fw-lighter text-body-tertiary">Data diurut berdasarkan persentase efisiensi terbesar</div>
+        <div class="fs-5 fw-bold">DRD & Penerimaan</div>
+        <div class="fw-lighter text-body-tertiary">Data diurutkan berdasarkan persentase efisiensi tertinggi</div>
       </div>
       <div class="table-responsive">
         <table class="table">

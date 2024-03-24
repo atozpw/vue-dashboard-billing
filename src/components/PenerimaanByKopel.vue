@@ -12,8 +12,26 @@
   const dataEfektifitas = ref([]);
   const dataStatus = ref([]);
 
+  const totalLppLembar = ref(0);
+  const totalLppRupiah = ref(0);
+  const totalDrdBerjalanLembar = ref(0);
+  const totalDrdBerjalanRupiah = ref(0);
+  const totalEfisiensiPersen = ref(0);
+  const totalEfisiensiRupiah = ref(0);
+  const totalEfektifitasPersen = ref(0);
+  const totalEfektifitasRupiah = ref(0);
+
   function refresh() {
     let item = [];
+
+    totalLppLembar.value = 0;
+    totalLppRupiah.value = 0;
+    totalDrdBerjalanLembar.value = 0;
+    totalDrdBerjalanRupiah.value = 0;
+    totalEfisiensiPersen.value = 0;
+    totalEfisiensiRupiah.value = 0;
+    totalEfektifitasPersen.value = 0;
+    totalEfektifitasRupiah.value = 0;
 
     dataKopel.value = getStorage('_branches');
     dataLppHarian.value = getStorage('_paymentTodays');
@@ -92,6 +110,13 @@
           }
         }
 
+        totalLppLembar.value += lppLembar;
+        totalLppRupiah.value += lppRupiah;
+        totalDrdBerjalanLembar.value += drdBerjalanLembar;
+        totalDrdBerjalanRupiah.value += drdBerjalanRupiah;
+        totalEfisiensiRupiah.value += efisiensiRupiah;
+        totalEfektifitasRupiah.value += efektifitasRupiah;
+
         item.push({
           kopelId: kopelId,
           kopelNama: kopelNama,
@@ -111,6 +136,9 @@
 
       data.value = item.sort((a, b) => {return b.efisiensiPersen - a.efisiensiPersen});
     }
+
+    totalEfisiensiPersen.value = (totalEfisiensiRupiah.value > 0) ? (totalEfisiensiRupiah.value * 100) / totalDrdBerjalanRupiah.value : 0;
+    totalEfektifitasPersen.value = (totalEfektifitasRupiah.value > 0) ? (totalEfektifitasRupiah.value * 100) / totalDrdBerjalanRupiah.value : 0;
   }
 
   refresh();
@@ -128,7 +156,7 @@
         <table class="table">
           <thead>
             <tr>
-              <th><small class="text-body-tertiary">KOTA PELAYANAN</small></th>
+              <th><small class="text-body-tertiary">UNIT LAYANAN</small></th>
               <th class="text-end"><small class="text-body-tertiary">LPP</small></th>
               <th class="text-end"><small class="text-body-tertiary">DRD</small></th>
               <th class="text-end"><small class="text-body-tertiary">EFISIENSI</small></th>
@@ -163,6 +191,26 @@
               </td>
             </tr>
           </tbody>
+          <tfoot>
+            <th><small class="text-body-tertiary">TOTAL</small></th>
+            <th class="text-end fw-semibold">
+              <div class="text-info pb-0">{{ numberFormat(totalLppLembar) }}</div>
+              <div class="pt-0">{{ numberFormat(totalLppRupiah) }}</div>
+            </th>
+            <th class="text-end fw-semibold">
+              <div class="text-info pb-0">{{ numberFormat(totalDrdBerjalanLembar) }}</div>
+              <div class="pt-0">{{ numberFormat(totalDrdBerjalanRupiah) }}</div>
+            </th>
+            <th class="text-end fw-semibold">
+              <div class="text-info pb-0">{{ numberFormat(totalEfisiensiPersen, 2) }}</div>
+              <div class="pt-0">{{ numberFormat(totalEfisiensiRupiah) }}</div>
+            </th>
+            <th class="text-end fw-semibold">
+              <div class="text-info pb-0">{{ numberFormat(totalEfektifitasPersen, 2) }}</div>
+              <div class="pt-0">{{ numberFormat(totalEfektifitasRupiah) }}</div>
+            </th>
+            <th>&nbsp;</th>
+          </tfoot>
         </table>
       </div>
     </div>

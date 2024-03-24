@@ -13,8 +13,30 @@
   const dataPemairBulanLalu = ref([]);
   const dataStatus = ref([]);
 
+  const totalDsmlDiisi = ref(0);
+  const totalDsmlTotal = ref(0);
+  const totalPemairPersen0 = ref(0);
+  const totalPemairRupiah0 = ref(0);
+  const totalPemairPersen1 = ref(0);
+  const totalPemairRupiah1 = ref(0);
+  const totalPemairPersen2 = ref(0);
+  const totalPemairRupiah2 = ref(0);
+  const totalPemairKubik = ref(0);
+  const totalPemairRupiah = ref(0);
+
   function refresh() {
     let item = [];
+
+    totalDsmlDiisi.value = 0;
+    totalDsmlTotal.value = 0;
+    totalPemairPersen0.value = 0;
+    totalPemairRupiah0.value = 0;
+    totalPemairPersen1.value = 0;
+    totalPemairRupiah1.value = 0;
+    totalPemairPersen2.value = 0;
+    totalPemairRupiah2.value = 0;
+    totalPemairKubik.value = 0;
+    totalPemairRupiah.value = 0;
 
     dataKopel.value = getStorage('_branches');
     dataMeter.value = getStorage('_meterCounts');
@@ -103,6 +125,14 @@
           }
         }
 
+        totalDsmlDiisi.value += dsmlDiisi;
+        totalDsmlTotal.value += dsmlTotal;
+        totalPemairRupiah0.value += pemairRupiah0;
+        totalPemairRupiah1.value += pemairRupiah1;
+        totalPemairRupiah2.value += pemairRupiah2;
+        totalPemairKubik.value += pemairKubik;
+        totalPemairRupiah.value += pemairRupiah;
+
         item.push({
           kopelId: kopelId,
           kopelNama: kopelNama,
@@ -123,6 +153,10 @@
 
       data.value = item.sort((a, b) => {return b.pemairRupiah - a.pemairRupiah});
     }
+
+    totalPemairPersen0.value = (totalPemairRupiah0.value > 0) ? (totalPemairRupiah0.value * 100) / totalPemairRupiah.value : 0;
+    totalPemairPersen1.value = (totalPemairRupiah1.value > 0) ? (totalPemairRupiah1.value * 100) / totalPemairRupiah.value : 0;
+    totalPemairPersen2.value = (totalPemairRupiah2.value > 0) ? (totalPemairRupiah2.value * 100) / totalPemairRupiah.value : 0;
   }
 
   refresh();
@@ -140,7 +174,7 @@
         <table class="table">
           <thead>
             <tr>
-              <th><small class="text-body-tertiary">KOTA PELAYANAN</small></th>
+              <th><small class="text-body-tertiary">UNIT LAYANAN</small></th>
               <th class="text-end"><small class="text-body-tertiary">DSML</small></th>
               <th class="text-end"><small class="text-body-tertiary">PEMAIR 0</small></th>
               <th class="text-end"><small class="text-body-tertiary">PEMAIR 1 - 10</small></th>
@@ -180,6 +214,30 @@
               </td>
             </tr>
           </tbody>
+          <tfoot>
+            <th><small class="text-body-tertiary">TOTAL</small></th>
+            <th class="text-end fw-semibold">
+              <div class="pb-0">{{ numberFormat(totalDsmlDiisi) }}</div>
+              <div class="pt-0">{{ numberFormat(totalDsmlTotal) }}</div>
+            </th>
+            <th class="text-end fw-semibold">
+              <div class="text-info pb-0">{{ numberFormat(totalPemairPersen0, 2) }}</div>
+              <div class="pt-0">{{ numberFormat(totalPemairRupiah0) }}</div>
+            </th>
+            <th class="text-end fw-semibold">
+              <div class="text-info pb-0">{{ numberFormat(totalPemairPersen1, 2) }}</div>
+              <div class="pt-0">{{ numberFormat(totalPemairRupiah1) }}</div>
+            </th>
+            <th class="text-end fw-semibold">
+              <div class="text-info pb-0">{{ numberFormat(totalPemairPersen2, 2) }}</div>
+              <div class="pt-0">{{ numberFormat(totalPemairRupiah2) }}</div>
+            </th>
+            <th class="text-end fw-semibold">
+              <div class="text-info pb-0">{{ numberFormat(totalPemairKubik) }}</div>
+              <div class="pt-0">{{ numberFormat(totalPemairRupiah) }}</div>
+            </th>
+            <th>&nbsp;</th>
+          </tfoot>
         </table>
       </div>
     </div>

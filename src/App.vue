@@ -261,10 +261,14 @@
         <div class="card border-0">
           <div class="card-body py-2">
             <div class="row">
-              <div class="col-md-6 fs-4">
-                <a href="/" class="text-decoration-none text-white"><i class="bi-activity me-2"></i> Dashboard Billing System</a>
+              <div class="col-md-12 col-lg-6 fs-4">
+                <div class="d-none d-lg-block"><a href="./" class="text-decoration-none text-white"><i class="bi-activity me-2"></i> Dashboard Billing System</a></div>
+                <div class="d-lg-none text-center"><a href="./" class="text-decoration-none text-white"><i class="bi-activity me-2"></i> Dashboard Billing System</a></div>
               </div>
-              <div class="col-md-6 fw-lighter d-flex align-items-center justify-content-end">
+              <div class="col-md-12 col-lg-6 fw-lighter d-flex align-items-center justify-content-end d-none d-lg-flex">
+                <LatestUpdate />
+              </div>
+              <div class="col-md-12 col-lg-6 fw-lighter d-flex align-items-center justify-content-center d-lg-none">
                 <LatestUpdate />
               </div>
             </div>

@@ -3,6 +3,8 @@
   import { getStorage } from './helpers/getStorage'
   import { setStorage } from './helpers/setStorage'
   import { latestUpdate } from './helpers/latestUpdate'
+  import { useOverlayScrollbars } from 'overlayscrollbars-vue'
+  import { onMounted } from 'vue'
 
   import LatestUpdate from './components/LatestUpdate.vue'
   import DrdBerjalan from './components/DrdBerjalan.vue'
@@ -13,6 +15,19 @@
   import BacaanByKopel from './components/BacaanByKopel.vue'
   import GrafikPenerimaan from './components/GrafikPenerimaan.vue'
   import GrafikBacaan from './components/GrafikBacaan.vue'
+
+  const [initBodyOverlayScrollbars, getBodyOverlayScrollbarsInstance] =
+    useOverlayScrollbars({
+      defer: true,
+      options: {
+        scrollbars: {
+          autoHide: 'scroll',
+          theme: 'os-theme-dark',
+        },
+      },
+    });
+
+  onMounted(() => initBodyOverlayScrollbars(document.body));
 
   axios.interceptors.response.use(function (response) {
     setStorage('_latestUpdate', latestUpdate());

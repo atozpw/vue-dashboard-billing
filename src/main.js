@@ -1,4 +1,5 @@
 import "./assets/main.scss";
+import "overlayscrollbars/overlayscrollbars.css";
 import * as bootstrap from "bootstrap";
 import VueApexCharts from "vue3-apexcharts";
 import axios from "axios";

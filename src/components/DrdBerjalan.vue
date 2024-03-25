@@ -39,7 +39,7 @@
     }
 
     if (currentAmount.value > lastAmount.value) {
-      percent.value = ((currentAmount.value - lastAmount.value) * 100) / currentAmount.value;
+      percent.value = ((currentAmount.value - lastAmount.value) * 100) / lastAmount.value;
       indicatorStatus.value = 'text-success';
       indicatorArrow.value = 'bi-arrow-up-short';
     }
